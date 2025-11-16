@@ -297,6 +297,7 @@ struct JockerSlotView: View {
                     Image(.infoJocker)
                         .resizable()
                         .aspectRatio(contentMode: .fit)
+                        .scaleEffect(UIScreen.main.bounds.width > 1000 ? 1.3 : 1)
                         .frame(width: 551, height: 284)
                     
                     Spacer()

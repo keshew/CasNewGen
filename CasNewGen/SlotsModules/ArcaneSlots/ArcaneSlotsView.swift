@@ -297,6 +297,7 @@ struct ArcaneSlotsView: View {
                     Image(.egyptInfo)
                         .resizable()
                         .aspectRatio(contentMode: .fit)
+                        .scaleEffect(UIScreen.main.bounds.width > 1000 ? 1.4 : 1)
                         .frame(width: 531, height: 284)
                     
                     Spacer()

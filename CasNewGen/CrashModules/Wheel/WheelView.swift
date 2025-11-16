@@ -147,6 +147,9 @@ struct WheelView: View {
                                         endAngle: Angle(degrees: Double(i + 1) * segmentAngle)
                                     )
                                     .fill(viewModel.segments[i].color)
+                                    .shadow(color: viewModel.selectedSegmentIndex == i ? Color.yellow.opacity(0.8) : Color.clear,
+                                            radius: viewModel.selectedSegmentIndex == i ? 15 : 0, x: 0, y: 0)
+
                                     .overlay(
                                         Text(viewModel.segments[i].title)
                                             .font(.custom("PaytoneOne-Regular", size: 12))
@@ -157,6 +160,7 @@ struct WheelView: View {
                                                 y: 90 + 60 * CGFloat(sin(midAngle * .pi / 180))
                                             )
                                     )
+                                  
                                     .onTapGesture {
                                         viewModel.selectedSegmentIndex = i
                                     }
@@ -164,7 +168,7 @@ struct WheelView: View {
                             }
                             .frame(width: 180, height: 180)
                             .rotationEffect(Angle(degrees: viewModel.rotationDegree))
-                            
+                           
                             Triangle()
                                 .fill(Color(red: 231/255, green: 201/255, blue: 104/255))
                                 .scaleEffect(y: -1)

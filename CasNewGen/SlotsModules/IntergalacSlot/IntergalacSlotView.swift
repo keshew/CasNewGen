@@ -294,6 +294,7 @@ struct IntergalacSlotView: View {
                     
                     Image(.infoGalact)
                         .resizable()
+                        .scaleEffect(UIScreen.main.bounds.width > 1000 ? 1.2 : 1)
                         .frame(width: 531, height: 284)
                     
                     Spacer()
