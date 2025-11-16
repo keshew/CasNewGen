@@ -23,8 +23,8 @@ class SoundManager: ObservableObject {
         }
     }
     
-    @Published var isSoundEnabled: Bool = UserDefaults.standard.bool(forKey: "isOns")
-    @Published var isMusicEnabled: Bool = UserDefaults.standard.bool(forKey: "isNotifOn")
+    @Published var isSoundEnabled: Bool = UserDefaults.standard.bool(forKey: "isSoundOn")
+    @Published var isMusicEnabled: Bool = UserDefaults.standard.bool(forKey: "isMusicOn")
 
     init() {
         loadBackgroundMusic()
@@ -51,7 +51,7 @@ class SoundManager: ObservableObject {
     }
     
     private func loadBackgroundMusic() {
-        if let url = Bundle.main.url(forResource: "bg", withExtension: "mp3") {
+        if let url = Bundle.main.url(forResource: "bg", withExtension: "wav") {
             bgPlayer = try? AVAudioPlayer(contentsOf: url)
             bgPlayer?.numberOfLoops = -1
             bgPlayer?.volume = backgroundVolume
@@ -60,7 +60,7 @@ class SoundManager: ObservableObject {
     }
     
     private func loadSoundBtnMusic() {
-        if let url = Bundle.main.url(forResource: "soundBtn", withExtension: "mp3") {
+        if let url = Bundle.main.url(forResource: "wheel", withExtension: "mp3") {
             soundBtnPlayer = try? AVAudioPlayer(contentsOf: url)
             soundBtnPlayer?.volume = soundEffectVolume
             soundBtnPlayer?.prepareToPlay()
@@ -108,7 +108,7 @@ class SoundManager: ObservableObject {
     
     func playWrong() {
         guard isSoundEnabled else { return }
-        wrongPlayer?.play()
+        soundBtnPlayer?.play()
     }
     
     func playSlot1() {
@@ -118,7 +118,7 @@ class SoundManager: ObservableObject {
     
     func toggleSound() {
         isSoundEnabled.toggle()
-        UserDefaults.standard.set(isSoundEnabled, forKey: "isOns")
+        UserDefaults.standard.set(isSoundEnabled, forKey: "isSoundOn")
     }
     
     func toggleMusic() {
@@ -128,6 +128,6 @@ class SoundManager: ObservableObject {
         } else {
             stopBackgroundMusic()
         }
-        UserDefaults.standard.set(isMusicEnabled, forKey: "isNotifOn")
+        UserDefaults.standard.set(isMusicEnabled, forKey: "isMusicOn")
     }
 }

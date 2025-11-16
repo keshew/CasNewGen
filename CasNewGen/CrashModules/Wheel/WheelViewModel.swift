@@ -48,7 +48,7 @@ class WheelViewModel: ObservableObject {
          }
          
          isSpinning = true
-         
+        soundManager.playSoundBtn()
         let _ = UserDefaultsManager.shared.spendCoins(bet)
         coin = UserDefaultsManager.shared.coins
         
@@ -74,6 +74,7 @@ class WheelViewModel: ObservableObject {
              }
              
              self.isSpinning = false
+             self.soundManager.stopWrong()
          }
      }
      
