@@ -1,10 +1,3 @@
-//
-//  CasNewGenTests.swift
-//  CasNewGenTests
-//
-//  Created by Артём Коротков on 13.11.2025.
-//
-
 import XCTest
 @testable import CasNewGen
 
